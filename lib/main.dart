@@ -1,3 +1,4 @@
+import 'package:balghny/view/screen/camera_screen.dart';
 import 'package:balghny/view/screen/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -27,10 +28,10 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(),
       routes: {
-    //    "login" : (context) => Login(),
-     //   "register" : (context) => Register(),
-       // "home" : (context) => HomePage(),
-        //"cam" : (context) => Cam(),
+     //  "login" : (context) => Login(),
+      //  "register" : (context) => Register(),
+        "home" : (context) => HomePage(),
+        "cam" : (context) => Cam(),
 
 
 
