@@ -1,5 +1,8 @@
 import 'package:balghny/view/screen/camera_screen.dart';
 import 'package:balghny/view/screen/home_page.dart';
+import 'package:balghny/view/screen/login_screen.dart';
+import 'package:balghny/view/screen/registration_screen.dart';
+import 'package:balghny/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,10 +29,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Splash(),
       routes: {
-     //  "login" : (context) => Login(),
-      //  "register" : (context) => Register(),
+       "login" : (context) => Login(),
+        "register" : (context) => Registration(),
         "home" : (context) => HomePage(),
         "cam" : (context) => Cam(),
 
