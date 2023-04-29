@@ -116,49 +116,242 @@ class _HomePageState extends State<HomePage> {
          scrollDirection: Axis.vertical,
          child: Column(
            children: [
-             Container(
-               height: 580,
-               child: GridView.builder(
-                   scrollDirection: Axis.vertical,
-                   itemCount: cateList.length,
-                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                     crossAxisCount: 2,
-                     crossAxisSpacing: 10,
-                     //  mainAxisSpacing: 10,
-                     //   childAspectRatio: 1 / 1.25,
-                     childAspectRatio: 1/1.13 ,
-                   ),
-                   itemBuilder: (context, index) {
-                     return InkWell(
-                       onTap: ()=> Navigator.of(context).pushNamed("cam"),
-                       child: Container(
-                           margin: EdgeInsets.only(bottom: 20),
-                           // padding: EdgeInsets.all(5),
-                           height: 100,
-                           width: 150,
-                           decoration: BoxDecoration(
-                               color: Colors.grey[200],
-                               borderRadius: BorderRadius.circular(20)
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+               InkWell(
+                 onTap: ()=> Navigator.of(context).pushNamed("cam"),
+                 child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                     height: 180,
+                     width: 170,
+                     decoration: BoxDecoration(
+                         color: Colors.grey[200],
+                         borderRadius: BorderRadius.circular(10)
+                     ),
+                     child:
+                     Column(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(10.0),
+                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                         ),
+                         SizedBox(height: 5,),
+                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                         Container(
+                             margin: EdgeInsets.only(right: 20),
+                             child: Text("Fire Disaster",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                         SizedBox(height: 5,),
+                       ],
+                     )),
+               ),
+               SizedBox(width: 20,),
+               InkWell(
+                 onTap: ()=> Navigator.of(context).pushNamed("cam2"),
+                 child: Container(
+                   //margin: EdgeInsets.only(bottom: 20),
+                   // padding: EdgeInsets.all(5),
+                     height: 180,
+                     width: 170,
+                     decoration: BoxDecoration(
+                         color: Colors.grey[200],
+                         borderRadius: BorderRadius.circular(10)
+                     ),
+                     child:
+                     Column(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(10.0),
+                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                         ),
+                         SizedBox(height: 5,),
+                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                         Container(
+                             margin: EdgeInsets.only(right: 20),
+                             child: Text("Water disaster",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                         SizedBox(height: 5,),
+                       ],
+                     )),
+               ),
+             ],),
+
+             SizedBox(height: 20,),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam3"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
                            ),
-                           child:
-                           Column(
-                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                             children: [
-                               ClipRRect(
-                                 borderRadius: BorderRadius.circular(20.0),
-                                 child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                               ),
-                               SizedBox(height: 5,),
-                               //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                               Container(
-                                   margin: EdgeInsets.only(right: 20),
-                                   child: Text(cateList[index]['name'],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                               SizedBox(height: 5,),
-                             ],
-                           )),
-                     );
-                   }),
-             ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("Infrastructure",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
+                 SizedBox(width: 20,),
+                 InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam4"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("accidents",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
+               ],),
+             SizedBox(height: 20,),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 Container(
+                   //margin: EdgeInsets.only(bottom: 20),
+                   // padding: EdgeInsets.all(5),
+                     height: 180,
+                     width: 170,
+                     decoration: BoxDecoration(
+                         color: Colors.grey[200],
+                         borderRadius: BorderRadius.circular(20)
+                     ),
+                     child:
+                     Column(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(20.0),
+                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                         ),
+                         SizedBox(height: 5,),
+                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                         Container(
+                             margin: EdgeInsets.only(right: 20),
+                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                         SizedBox(height: 5,),
+                       ],
+                     )),
+                 SizedBox(width: 20,),
+                 Container(
+                   //margin: EdgeInsets.only(bottom: 20),
+                   // padding: EdgeInsets.all(5),
+                     height: 180,
+                     width: 170,
+                     decoration: BoxDecoration(
+                         color: Colors.grey[200],
+                         borderRadius: BorderRadius.circular(20)
+                     ),
+                     child:
+                     Column(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(20.0),
+                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                         ),
+                         SizedBox(height: 5,),
+                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                         Container(
+                             margin: EdgeInsets.only(right: 20),
+                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                         SizedBox(height: 5,),
+                       ],
+                     )),
+               ],),
+             SizedBox(height: 20,),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 Container(
+                   //margin: EdgeInsets.only(bottom: 20),
+                   // padding: EdgeInsets.all(5),
+                     height: 180,
+                     width: 170,
+                     decoration: BoxDecoration(
+                         color: Colors.grey[200],
+                         borderRadius: BorderRadius.circular(20)
+                     ),
+                     child:
+                     Column(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(20.0),
+                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                         ),
+                         SizedBox(height: 5,),
+                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                         Container(
+                             margin: EdgeInsets.only(right: 20),
+                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                         SizedBox(height: 5,),
+                       ],
+                     )),
+                 SizedBox(width: 20,),
+                 Container(
+                   //margin: EdgeInsets.only(bottom: 20),
+                   // padding: EdgeInsets.all(5),
+                     height: 180,
+                     width: 170,
+                     decoration: BoxDecoration(
+                         color: Colors.grey[200],
+                         borderRadius: BorderRadius.circular(20)
+                     ),
+                     child:
+                     Column(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(20.0),
+                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                         ),
+                         SizedBox(height: 5,),
+                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                         Container(
+                             margin: EdgeInsets.only(right: 20),
+                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                         SizedBox(height: 5,),
+                       ],
+                     )),
+               ],)
            ],
          ),
        ),

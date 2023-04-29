@@ -1,5 +1,9 @@
-import 'package:balghny/view/screen/camera_screen.dart';
-import 'package:balghny/view/screen/home_page.dart';
+import 'package:balghny/view/screen/cam2_water_screen.dart';
+import 'package:balghny/view/screen/cam3_infa_screen.dart';
+
+import 'package:balghny/view/screen/cam4_accidents_screen.dart';
+import 'package:balghny/view/screen/cam_fire_screen.dart';
+ import 'package:balghny/view/screen/home_page.dart';
 import 'package:balghny/view/screen/login_screen.dart';
 import 'package:balghny/view/screen/registration_screen.dart';
 import 'package:balghny/view/screen/splash_screen.dart';
@@ -29,12 +33,15 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Splash(),
+      home: HomePage(),
       routes: {
        "login" : (context) => Login(),
         "register" : (context) => Registration(),
         "home" : (context) => HomePage(),
         "cam" : (context) => Cam(),
+        "cam2" : (context) => Cam2(),
+        "cam3" : (context) => Cam3(),
+        "cam4" : (context) => Cam4(),
 
 
 
