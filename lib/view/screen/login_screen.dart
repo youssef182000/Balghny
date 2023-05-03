@@ -16,14 +16,19 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: 120,
-                      child: Image.asset('assets/images/t2.png')),
+                  Stack(children: [
+                    Container(child: Image.asset('assets/images/111.png',width: 120,height: 125,)),
+                    Container(
+                        margin: EdgeInsets.only(left: 2,top: 3),
+                        child: Image.asset('assets/images/22.png',width: 110,height: 110,)),
+                  ],),
+
+
                 ],
               ),
               SizedBox(height: 20,),
-              Container(child: Text("Create Your Account",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
+              Container(child: Text("Login to your account",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
               SizedBox(height: 20,),
 
 
@@ -31,28 +36,32 @@ class _LoginState extends State<Login> {
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(children: [
 
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter your email here',
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
+                  SizedBox(height: 45,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter your email here',
+                        labelText: 'Email',
+                        prefixIcon: Icon(Icons.email),
+                      ),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter your password here',
-                        labelText: 'Password',
-                        suffixIcon: Icon(Icons.remove_red_eye)
+                  SizedBox(height: 15,),
+                  SizedBox(height: 45,
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter your password here',
+                          labelText: 'Password',
+                          suffixIcon: Icon(Icons.remove_red_eye)
 
+                      ),
                     ),
                   ),
 
                 ],),),
-              SizedBox(height: 20,),
+              SizedBox(height: 15,),
               Container(child: Column(children: [
                 Row(
                   children: [
@@ -72,7 +81,7 @@ class _LoginState extends State<Login> {
                           child: const Text(
                             "Sign In",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+
                                 fontSize: 20,
                                 color: Colors.black),
                           ),
@@ -81,9 +90,11 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
+                SizedBox(height: 5,),
                 Row(children: [
                   Expanded(child:  Center(child: Text("Or Sign in with",style: TextStyle(color: Colors.grey),)))
                 ],),
+                SizedBox(height: 5,),
                 Stack(
                   children: [
                     Row(
@@ -105,7 +116,7 @@ class _LoginState extends State<Login> {
                               child: const Text(
                                 "Continue with google",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+
                                     fontSize: 20,
                                     color: Colors.black),
                               ),
@@ -125,6 +136,7 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
+                SizedBox(height: 5,),
                 Stack(
                   children: [
                     Row(
@@ -144,9 +156,9 @@ class _LoginState extends State<Login> {
                                       RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(30)))),
                               child: const Text(
-                                "Continue with facebook",
+                                "    Continue with facebook",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+
                                     fontSize: 20,
                                     color: Colors.black),
                               ),
@@ -170,23 +182,30 @@ class _LoginState extends State<Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account?"),
+                    Text("     Don't have an account?",style: TextStyle(fontSize: 15)),
                     SizedBox(width: 5,),
                     InkWell(
                         onTap: (){
-                          Navigator.of(context).pushNamed("home");
+                          Navigator.of(context).pushNamed("register");
                         },
-                        child: Text("Sign up",style: TextStyle(color: Colors.green),))
+                        child: Text("Sign up",style: TextStyle(color: Colors.green,fontSize: 15),))
                   ],),
+                SizedBox(height: 20,),
 
               ],),),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(width: 120,
-                      child: Image.asset('assets/images/t2.png')),
+                  Stack(children: [
+                    Container(child: Image.asset('assets/images/33.png',width: 120,height: 125,)),
+                    Container(
+                        margin: EdgeInsets.only(left: 10,top: 15),
+                        child: Image.asset('assets/images/44.png',width: 110,height: 110,)),
+                  ],),
+
+
                 ],
               ),
 

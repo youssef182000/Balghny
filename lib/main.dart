@@ -7,6 +7,7 @@ import 'package:balghny/view/screen/cam_fire_screen.dart';
 import 'package:balghny/view/screen/login_screen.dart';
 import 'package:balghny/view/screen/registration_screen.dart';
 import 'package:balghny/view/screen/splash_screen.dart';
+ 
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Registration(),
       routes: {
        "login" : (context) => Login(),
         "register" : (context) => Registration(),
@@ -42,8 +43,6 @@ class MyApp extends StatelessWidget {
         "cam2" : (context) => Cam2(),
         "cam3" : (context) => Cam3(),
         "cam4" : (context) => Cam4(),
-
-
 
 
       },

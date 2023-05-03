@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -19,46 +18,149 @@ class _HomePageState extends State<HomePage> {
 
   Widget currentScreen =  HomePage();
 
-  List cateList = [
-    {
-      'name':'Report 1'
-    },
-    {
-      'name':'Report 2'
-    },
-    {
-      'name':'Report 3'
-    },
-    {
-      'name':'Report 4'
-    },
-    {
-      'name':'Report 5'
-    },
-    {
-      'name':'Report 6'
-    },
-    {
-      'name':'Report 7'
-    },
-    {
-      'name':'Report 8'
-    },
-    {
-      'name':'Report 9'
-    },
-    {
-      'name':'Report 10'
-    },
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+              child: UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: (AssetImage("assets/images/my.jpg")),
+                ),
+                accountName: Text("Ahmed Ashraf"),
+                accountEmail: Text("ahmedashraf@gmail.com"),
+              ),
+            ),
+            ListTile(
+              title: Text("My Orders"),
+              leading: Icon(Icons.message),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("My Profile"),
+              leading: Icon(Icons.person),
+              onTap: () {
+                Navigator.of(context).pushNamed("home");
+              },
+            ),
+            ListTile(
+              title: Text("Delivery Address"),
+              leading: Icon(Icons.location_on),
+              onTap: () {
+                Navigator.of(context).pushNamed("home");
+              },
+            ),
+            ListTile(
+              title: Text("Payment Methods"),
+              leading: Icon(Icons.payment),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Contact Us"),
+              leading: Icon(Icons.mail),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Settings"),
+              leading: Icon(Icons.settings),
+              onTap: () {
+                Navigator.of(context).pushNamed("contact");
+              },
+            ),
+            ListTile(
+              title: Text("Helps & FAQs"),
+              leading: Icon(Icons.help_center),
+              onTap: () {
+                Navigator.of(context).pushNamed("login");
+              },
+            ),
+
+            SizedBox(height: 60,),
+            Row(children: [
+              SizedBox(width: 20,),
+              InkWell(onTap: (){
+                print("Facebook");
+              },child: Container(
+                padding: EdgeInsets.all(5),
+                width: 110,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.deepOrange,
+                    borderRadius: BorderRadius.circular(30)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //Icon(Icons.power_settings_new),
+                    Stack(children: [
+                      CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(left: 2),
+                        child: Icon(
+                            Icons.power_settings_new,color: Colors.deepOrangeAccent),
+                      )
+                    ],),
+                    SizedBox(width: 10,),
+                    Text("Log Out",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)
+
+                  ],),
+              ),)
+            ],)
+          ],
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: EdgeInsets.all(10),
         child:  Column(children: [
-          Row(children: [
+            SizedBox(height: 10,),
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                  width: 40,
+                  height: 40,
+                  margin: EdgeInsets.only(left: 5,),
+
+                  // margin: EdgeInsets.only(left: 20, top: 30),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Builder(
+                      builder: (context) {
+                        return IconButton(
+                            onPressed: () {
+                              Scaffold.of(context).openDrawer();
+                            },
+                            icon: Icon(
+                              Icons.menu,
+                              color: Colors.black,
+                              size: 15,
+                            ));
+                      }
+                  )),
+              SizedBox(width: 220,),
+              Column(children: [
+
+              ],),
+              SizedBox(width: 60,),
+
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset("assets/images/my.jpg",width: 35,height: 35,) ,
+              ),
+            ],),
+
+
+
+      /*    Row(children: [
             Expanded(flex: 1,child: Container(
                 width: 40,
                 height: 40,
@@ -84,14 +186,15 @@ class _HomePageState extends State<HomePage> {
             Expanded(flex: 5,child: Container()),
             Expanded(flex: 1,child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset("assets/images/my.jpg",width: 35,height: 35,) ,
+              child: Image.asset("assets/images/my.jpg",width: 40,height: 40,) ,
             ),)
           ],),
-
+*/
           Expanded(flex: 1,
             child: Container(
               margin: EdgeInsets.only(left: 20),
               child: Column(children: [
+                SizedBox(height: 5,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -234,7 +337,7 @@ class _HomePageState extends State<HomePage> {
                            //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
                            Container(
                                margin: EdgeInsets.only(right: 20),
-                               child: Text("accidents",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                               child: Text("Accidents",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
                            SizedBox(height: 5,),
                          ],
                        )),
@@ -244,114 +347,126 @@ class _HomePageState extends State<HomePage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Container(
-                   //margin: EdgeInsets.only(bottom: 20),
-                   // padding: EdgeInsets.all(5),
-                     height: 180,
-                     width: 170,
-                     decoration: BoxDecoration(
-                         color: Colors.grey[200],
-                         borderRadius: BorderRadius.circular(20)
-                     ),
-                     child:
-                     Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.circular(20.0),
-                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                         ),
-                         SizedBox(height: 5,),
-                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                         Container(
-                             margin: EdgeInsets.only(right: 20),
-                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                         SizedBox(height: 5,),
-                       ],
-                     )),
+                 InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
                  SizedBox(width: 20,),
-                 Container(
-                   //margin: EdgeInsets.only(bottom: 20),
-                   // padding: EdgeInsets.all(5),
-                     height: 180,
-                     width: 170,
-                     decoration: BoxDecoration(
-                         color: Colors.grey[200],
-                         borderRadius: BorderRadius.circular(20)
-                     ),
-                     child:
-                     Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.circular(20.0),
-                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                         ),
-                         SizedBox(height: 5,),
-                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                         Container(
-                             margin: EdgeInsets.only(right: 20),
-                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                         SizedBox(height: 5,),
-                       ],
-                     )),
+                 InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam2"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
                ],),
              SizedBox(height: 20,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Container(
-                   //margin: EdgeInsets.only(bottom: 20),
-                   // padding: EdgeInsets.all(5),
-                     height: 180,
-                     width: 170,
-                     decoration: BoxDecoration(
-                         color: Colors.grey[200],
-                         borderRadius: BorderRadius.circular(20)
-                     ),
-                     child:
-                     Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.circular(20.0),
-                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                         ),
-                         SizedBox(height: 5,),
-                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                         Container(
-                             margin: EdgeInsets.only(right: 20),
-                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                         SizedBox(height: 5,),
-                       ],
-                     )),
+                 InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
                  SizedBox(width: 20,),
-                 Container(
-                   //margin: EdgeInsets.only(bottom: 20),
-                   // padding: EdgeInsets.all(5),
-                     height: 180,
-                     width: 170,
-                     decoration: BoxDecoration(
-                         color: Colors.grey[200],
-                         borderRadius: BorderRadius.circular(20)
-                     ),
-                     child:
-                     Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.circular(20.0),
-                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                         ),
-                         SizedBox(height: 5,),
-                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                         Container(
-                             margin: EdgeInsets.only(right: 20),
-                             child: Text("123",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                         SizedBox(height: 5,),
-                       ],
-                     )),
-               ],)
+                 InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam2"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
+               ],),
            ],
          ),
        ),

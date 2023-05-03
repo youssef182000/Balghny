@@ -19,21 +19,26 @@ class _RegistrationState extends State<Registration> {
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: 120,
-                      child: Image.asset('assets/images/t2.png')),
+                  Stack(children: [
+                    Container(child: Image.asset('assets/images/111.png',width: 120,height: 125,)),
+                    Container(
+                        margin: EdgeInsets.only(left: 2,top: 3),
+                        child: Image.asset('assets/images/22.png',width: 110,height: 110,)),
+                  ],),
+
+                  Container(
+                     margin: EdgeInsets.only(top: 80),
+                    child: Text("Create Your Account",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
                 ],
               ),
-              SizedBox(height: 10,),
-              Container(child: Text("Create Your Account",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
+
+
               SizedBox(height: 10,),
               Column(
                 children: [
                   Stack(
                     children: [
-
-
                       Center(
                         child: CircleAvatar(
                           backgroundImage: AssetImage('assets/images/profile1.jpg'),
@@ -46,7 +51,7 @@ class _RegistrationState extends State<Registration> {
                       ),
                     ],
                   ),
-                  Text("Select Image")
+
                 ],
               ),
               SizedBox(height: 20,),
@@ -121,7 +126,7 @@ class _RegistrationState extends State<Registration> {
                       child: const Text(
                         "Sign Up",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
+
                             fontSize: 20,
                             color: Colors.black),
                       ),
@@ -154,7 +159,7 @@ class _RegistrationState extends State<Registration> {
                           child: const Text(
                             "Continue with google",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+
                                 fontSize: 20,
                                 color: Colors.black),
                           ),
@@ -193,9 +198,8 @@ class _RegistrationState extends State<Registration> {
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30)))),
                           child: const Text(
-                            "Continue with facebook",
+                            "    Continue with facebook",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
                                 fontSize: 20,
                                 color: Colors.black),
                           ),
@@ -218,12 +222,12 @@ class _RegistrationState extends State<Registration> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Text("Already have an account?"),
+              Text("     Already have an account?",style: TextStyle(fontSize: 15),),
               SizedBox(width: 5,),
               InkWell( onTap: (){
                 Navigator.of(context).pushNamed("login");
               },
-                  child: Text("Sign in",style: TextStyle(color: Colors.green),))
+                  child: Text("Sign in",style: TextStyle(color: Colors.green,fontSize: 15),))
             ],),
 
           ],),),
@@ -232,8 +236,14 @@ class _RegistrationState extends State<Registration> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(width: 120,
-                      child: Image.asset('assets/images/t2.png')),
+                  Stack(children: [
+                    Container(child: Image.asset('assets/images/33.png',width: 120,height: 125,)),
+                    Container(
+                        margin: EdgeInsets.only(left: 10,top: 15),
+                        child: Image.asset('assets/images/44.png',width: 110,height: 110,)),
+                  ],),
+
+
                 ],
               ),
 
