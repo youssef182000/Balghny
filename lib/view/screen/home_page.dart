@@ -1,3 +1,4 @@
+import 'package:balghny/view/widget/defaultBtn.dart';
 import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,96 +24,126 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: Column(
-          children: [
-            Container(
-              child: UserAccountsDrawerHeader(
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: (AssetImage("assets/images/my.jpg")),
+        child: Padding(
+          padding: EdgeInsets.only(top: 24,left: 2,right: 2),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  height: 240,
+                  padding: EdgeInsets.all(40),
+                  decoration: BoxDecoration(
+                    color: Colors.green[200], // Background color
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(120),
+                      bottomRight: Radius.circular(120),
+                    ),
+                  ),
+                  child: Container(
+                    height: 5,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.green[200],
+
+                    ),
+                    child:
+                    CircleAvatar(backgroundImage: AssetImage("assets/images/logo.jpg")),
+                  ),
                 ),
-                accountName: Text("Ahmed Ashraf"),
-                accountEmail: Text("ahmedashraf@gmail.com"),
               ),
-            ),
-            ListTile(
-              title: Text("My Orders"),
-              leading: Icon(Icons.message),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text("My Profile"),
-              leading: Icon(Icons.person),
-              onTap: () {
-                Navigator.of(context).pushNamed("home");
-              },
-            ),
-            ListTile(
-              title: Text("Delivery Address"),
-              leading: Icon(Icons.location_on),
-              onTap: () {
-                Navigator.of(context).pushNamed("home");
-              },
-            ),
-            ListTile(
-              title: Text("Payment Methods"),
-              leading: Icon(Icons.payment),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text("Contact Us"),
-              leading: Icon(Icons.mail),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text("Settings"),
-              leading: Icon(Icons.settings),
-              onTap: () {
-                Navigator.of(context).pushNamed("contact");
-              },
-            ),
-            ListTile(
-              title: Text("Helps & FAQs"),
-              leading: Icon(Icons.help_center),
-              onTap: () {
-                Navigator.of(context).pushNamed("login");
-              },
-            ),
 
-            SizedBox(height: 60,),
-            Row(children: [
-              SizedBox(width: 20,),
-              InkWell(onTap: (){
-                print("Facebook");
-              },child: Container(
-                padding: EdgeInsets.all(5),
-                width: 110,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.deepOrange,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Icon(Icons.power_settings_new),
-                    Stack(children: [
-                      CircleAvatar(
-                        radius: 14,
-                        backgroundColor: Colors.white,
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(left: 2),
-                        child: Icon(
-                            Icons.power_settings_new,color: Colors.deepOrangeAccent),
-                      )
-                    ],),
-                    SizedBox(width: 10,),
-                    Text("Log Out",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)
+               /*  Container(
+                child: UserAccountsDrawerHeader(
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: (AssetImage("assets/images/my.jpg")),
+                  ),
+                  accountName: Text("Ahmed Ashraf"),
+                  accountEmail: Text("ahmedashraf@gmail.com"),
+                ),
+              ),*/
+              Expanded(
+                  flex: 5,
+                  child: Column(children: [
 
-                  ],),
-              ),)
-            ],)
-          ],
+                    SizedBox(height: 20,),
+
+                ListTile(
+                  title: Text("My Profile"),
+                  leading: Icon(Icons.person),
+                  onTap: () {
+                    Navigator.of(context).pushNamed("home");
+                  },
+                ),
+                    ListTile(
+                      title: Text("HomePage"),
+                      leading: Icon(Icons.home),
+                      onTap: () {
+                        Navigator.of(context).pushNamed("home");
+                      },
+                    ),
+                    ListTile(
+                      title: Text("About Us"),
+                      leading: Icon(Icons.dataset),
+                      onTap: () {},
+                    ),
+
+
+                ListTile(
+                  title: Text("Contact Us"),
+                  leading: Icon(Icons.mail),
+                  onTap: () {},
+                ),
+
+                ListTile(
+                  title: Text("Helps & FAQs"),
+                  leading: Icon(Icons.help_center),
+                  onTap: () {
+                    Navigator.of(context).pushNamed("login");
+                  },
+                ),
+              ],)),
+
+              // SizedBox(height: 20,),
+              Expanded(
+                flex: 1,
+                child: Row(children: [
+                  defaultButton(text: 'Log Out',
+                      function: (){}),
+                 /* InkWell(onTap: (){
+                    print("Facebook");
+                  },child: Container(
+                    padding: EdgeInsets.all(5),
+                    width: 110,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.deepOrange,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        //Icon(Icons.power_settings_new),
+                        Stack(children: [
+                          CircleAvatar(
+                            radius: 14,
+                            backgroundColor: Colors.white,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(left: 2),
+                            child: Icon(
+                                Icons.power_settings_new,color: Colors.deepOrangeAccent),
+                          )
+                        ],),
+                        SizedBox(width: 10,),
+                        Text("Log Out",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)
+
+                      ],),
+                  ),)*/
+                ],),
+              )
+            ],
+          ),
         ),
       ),
       body: SafeArea(
@@ -146,12 +177,12 @@ class _HomePageState extends State<HomePage> {
                             ));
                       }
                   )),
-              SizedBox(width: 220,),
+               SizedBox(width: 30),
               Column(children: [
 
               ],),
-              SizedBox(width: 60,),
-
+              Text('Choose your report',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
+              SizedBox(width: 30,),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset("assets/images/my.jpg",width: 35,height: 35,) ,
@@ -194,17 +225,17 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               margin: EdgeInsets.only(left: 20),
               child: Column(children: [
-                SizedBox(height: 5,),
-                Row(
+                SizedBox(height: 20,),
+          /*      Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('Choose your report',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
                   ],
-                ),
+                ),*/
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                    Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
                   ],
                 ),
 
@@ -514,7 +545,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.fireplace,
+                            icon: Icon(Icons.dark_mode_rounded,
                                 color: currentTab == 1
                                     ? const Color(0xFF1ABC00)
                                     : Colors.black),
@@ -538,7 +569,7 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             Navigator.of(context).pushNamed("scan");
                           },
-                          icon: Icon(Icons.document_scanner_outlined,
+                          icon: Icon(Icons.translate_outlined,
                               color: currentTab == 2
                                   ? Colors.green
                                   : Colors.black),

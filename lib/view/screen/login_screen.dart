@@ -1,3 +1,4 @@
+import 'package:balghny/view/widget/defaultBtn.dart';
 import 'package:flutter/material.dart';
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _LoginState extends State<Login> {
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(children: [
 
-                  SizedBox(height: 45,
+                  SizedBox(height: 50,
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -47,7 +48,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   SizedBox(height: 15,),
-                  SizedBox(height: 45,
+                  SizedBox(height: 50,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -61,124 +62,75 @@ class _LoginState extends State<Login> {
                   ),
 
                 ],),),
-              SizedBox(height: 15,),
+              SizedBox(height: 60,),
               Container(child: Column(children: [
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed("home");
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.green),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30)))),
-                          child: const Text(
-                            "Sign In",
-                            style: TextStyle(
+                      child: defaultButton(
+                        text: 'Sign In',
+                        function: (){},
 
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
-                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 5,),
+                SizedBox(height: 10,),
                 Row(children: [
                   Expanded(child:  Center(child: Text("Or Sign in with",style: TextStyle(color: Colors.grey),)))
                 ],),
-                SizedBox(height: 5,),
+                SizedBox(height: 10,),
                 Stack(
                   children: [
                     Row(
                       children: [
 
                         Expanded(
-                          child:  Container(
-                            margin: EdgeInsets.symmetric(horizontal: 20),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                //   Navigator.of(context).pushNamed("login");
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.green),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(30)))),
-                              child: const Text(
-                                "Continue with google",
-                                style: TextStyle(
+                          child:  defaultButton(
+                            text: '   Continue with google',
+                            function: (){},
 
-                                    fontSize: 20,
-                                    color: Colors.black),
-                              ),
-                            ),
                           ),
                         ),
                       ],
                     ),
 
                     Container(
-                      margin: EdgeInsets.only(left: 20,top: 5),
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/Google.png'),
-                        radius: 19,
-
+                      margin: EdgeInsets.only(left: 15,top: 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.asset("assets/images/google (1).png",width: 50,height: 40,) ,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 5,),
+                SizedBox(height: 15,),
                 Stack(
                   children: [
                     Row(
                       children: [
 
                         Expanded(
-                          child:  Container(
-                            margin: EdgeInsets.symmetric(horizontal: 20),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                //   Navigator.of(context).pushNamed("login");
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.green),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(30)))),
-                              child: const Text(
-                                "    Continue with facebook",
-                                style: TextStyle(
+                          child:  defaultButton(
+                            text: '       Continue with facebook',
+                            function: (){},
 
-                                    fontSize: 20,
-                                    color: Colors.black),
-                              ),
-                            ),
                           ),
                         ),
                       ],
                     ),
 
-                    Container(
-                      margin: EdgeInsets.only(left: 20,top: 5),
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/Face.png'),
-                        radius: 19,
 
+                    Container(
+                      margin: EdgeInsets.only(left: 15,top: 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.asset("assets/images/face1.png",width: 50,height: 40,) ,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 5,),
+                SizedBox(height: 10,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -193,7 +145,7 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 20,),
 
               ],),),
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

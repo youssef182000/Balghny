@@ -1,3 +1,4 @@
+import 'package:balghny/view/widget/defaultBtn.dart';
 import 'package:flutter/material.dart';
 
 
@@ -26,16 +27,12 @@ class _RegistrationState extends State<Registration> {
                         margin: EdgeInsets.only(left: 2,top: 3),
                         child: Image.asset('assets/images/22.png',width: 110,height: 110,)),
                   ],),
-
-                  Container(
-                     margin: EdgeInsets.only(top: 80),
-                    child: Text("Create Your Account",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
                 ],
               ),
 
+              Text("Create Your Account",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
 
-              SizedBox(height: 10,),
-              Column(
+           /*   Column(
                 children: [
                   Stack(
                     children: [
@@ -53,13 +50,13 @@ class _RegistrationState extends State<Registration> {
                   ),
 
                 ],
-              ),
-              SizedBox(height: 20,),
+              ),*/
+              SizedBox(height: 15,),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(children: [
                 SizedBox(
-                  height: 45,
+                  height: 50,
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -69,8 +66,8 @@ class _RegistrationState extends State<Registration> {
                     ),
                   ),
                 ),
-                  SizedBox(height: 10,),
-                  SizedBox(height: 45,
+                  SizedBox(height: 15,),
+                  SizedBox(height: 50,
                     child: TextField(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -80,8 +77,8 @@ class _RegistrationState extends State<Registration> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  SizedBox(height: 45,
+                  SizedBox(height: 15,),
+                  SizedBox(height: 50,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -93,8 +90,8 @@ class _RegistrationState extends State<Registration> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  SizedBox(height: 45,
+                  SizedBox(height: 15,),
+                  SizedBox(height: 50,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -106,124 +103,84 @@ class _RegistrationState extends State<Registration> {
                     ),
                   ),
               ],),),
-              SizedBox(height: 10,),
+              SizedBox(height: 40),
           Container(child: Column(children: [
+
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: ElevatedButton(
-                      onPressed: () {
-                          Navigator.of(context).pushNamed("home");
-                      },
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.green),
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)))),
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-
-                            fontSize: 20,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ),
+                  child:  defaultButton(text: 'Sign Up',
+                  function: (){}),
                 ),
               ],
             ),
+            SizedBox(height: 6,),
             Row(children: [
               Expanded(child:  Center(child: Text("Or Sign up with",style: TextStyle(color: Colors.grey),)))
             ],),
+            SizedBox(height: 6,),
             Stack(
               children: [
                 Row(
                   children: [
 
                     Expanded(
-                      child:  Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            //   Navigator.of(context).pushNamed("login");
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.green),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30)))),
-                          child: const Text(
-                            "Continue with google",
-                            style: TextStyle(
+                      child:
+                      defaultButton(
+                        text: '    Continue with google',
+                        function: (){},
 
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
-                        ),
                       ),
                     ),
                   ],
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(left: 20,top: 5),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/Google.png'),
-                    radius: 19,
-
+                  margin: EdgeInsets.only(left: 15,top: 0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset("assets/images/google (1).png",width: 50,height: 40,) ,
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 15,),
             Stack(
               children: [
                 Row(
                   children: [
 
                     Expanded(
-                      child:  Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            //   Navigator.of(context).pushNamed("login");
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.green),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30)))),
-                          child: const Text(
-                            "    Continue with facebook",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
-                        ),
-                      ),
+                      child:   defaultButton(text: '    Continue with facebook',function: (){}),
                     ),
                   ],
                 ),
 
+                Container(
+                  margin: EdgeInsets.only(left: 15,top: 0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset("assets/images/face1.png",width: 50,height: 40,) ,
+                  ),
+                ),
+                /*
                 Container(
                   margin: EdgeInsets.only(left: 20,top: 5),
                   child: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/Face.png'),
-                    radius: 19,
+                    radius: 20,
 
                   ),
                 ),
+                 */
               ],
             ),
+            SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
               Text("     Already have an account?",style: TextStyle(fontSize: 15),),
-              SizedBox(width: 5,),
+              SizedBox(width: 10,),
               InkWell( onTap: (){
                 Navigator.of(context).pushNamed("login");
               },
@@ -231,7 +188,7 @@ class _RegistrationState extends State<Registration> {
             ],),
 
           ],),),
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
