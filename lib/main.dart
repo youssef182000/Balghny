@@ -7,7 +7,7 @@ import 'package:balghny/view/screen/cam_fire_screen.dart';
 import 'package:balghny/view/screen/login_screen.dart';
 import 'package:balghny/view/screen/registration_screen.dart';
 import 'package:balghny/view/screen/splash_screen.dart';
- 
+
 import 'package:flutter/material.dart';
 
 void main() {
