@@ -27,79 +27,83 @@ class _AccordionPageState extends State<AccordionPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(6.0),
+          padding: const EdgeInsets.all(0),
           child: Column(
             children: [
-              Stack(children: [
+              Expanded(
+                child: Stack(children: [
 
-                Container(
-                  height: 300,
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.green[200], // Background color
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(250),
-                      bottomRight: Radius.circular(250),
+                  Container(
+                    height: 300,
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.green[200], // Background color
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(250),
+                        bottomRight: Radius.circular(250),
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: ClipOval(
-                      child: Container(
-                        height: 212,
-                        width: 222,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                              color: Colors.white,
-                              width: 10.0,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(120), // Border radius
+                    child: Center(
+                      child: ClipOval(
+                        child: Container(
+                          height: 212,
+                          width: 222,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                                color: Colors.white,
+                                width: 10.0,
+                                style: BorderStyle.solid),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(120), // Border radius
+                            ),
                           ),
+                          child:
+                          CircleAvatar(backgroundImage: AssetImage("assets/images/logo.jpg")),
                         ),
-                        child:
-                        CircleAvatar(backgroundImage: AssetImage("assets/images/logo.jpg")),
                       ),
                     ),
                   ),
-                ),
 
-                Row(children: [
-                  IconButton(onPressed: (){ Navigator.of(context).pushNamed("home");}, icon: Icon(Icons.arrow_back,color: Colors.white,))
+                  Row(children: [
+                    IconButton(onPressed: (){ Navigator.of(context).pushNamed("home");}, icon: Icon(Icons.arrow_back,color: Colors.white,))
+                  ],),
                 ],),
-              ],),
+              ),
               SizedBox(
                 height: 10,
               ),
               Text("FAQ ",
                   style: TextStyle(
                       wordSpacing: 2, fontSize: 30, fontWeight: FontWeight.bold)),
-              Container(
-                width: 400,
-                height: 350,
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: _items.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final item = _items[index];
-                    return ExpansionTile(
-                      title: Text(item['title'],
-                          style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold)),
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(item['description'],
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                              )),
-                        ),
-                      ],
-                    );
-                  },
+              Expanded(
+                child: Container(
+                  width: 400,
+                  height: 350,
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    itemCount: _items.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final item = _items[index];
+                      return ExpansionTile(
+                        title: Text(item['title'],
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold)),
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Text(item['description'],
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                )),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

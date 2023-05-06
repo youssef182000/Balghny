@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: Drawer(
         child: Padding(
-          padding: EdgeInsets.only(top: 24,left: 2,right: 2),
+          padding: EdgeInsets.only(top: 0,left: 2,right: 2),
           child: Column(
             children: [
               Expanded(
@@ -151,54 +151,56 @@ class _HomePageState extends State<HomePage> {
               ),*/
               Expanded(
                   flex: 5,
-                  child: Column(children: [
+                  child: SingleChildScrollView(
+                    child: Column(children: [
 
-                    SizedBox(height: 20,),
-
-                ListTile(
-                  title: Text("My Profile"),
-                  leading: Icon(Icons.person),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ProfileScreen()),
-                        );
-                  },
-                ),
-                    ListTile(
-                      title: Text("HomePage"),
-                      leading: Icon(Icons.home),
-                      onTap: () {
-                        Navigator.of(context).pushNamed("home");
-                      },
-                    ),
-                    ListTile(
-                      title: Text("About Us"),
-                      leading: Icon(Icons.dataset),
-                      onTap: () { Navigator.of(context).pushReplacementNamed('AboutPage');},
-                    ),
-                    ListTile(
-                      title: Text("resault"),
-                      leading: Icon(Icons.dataset),
-                      onTap: () { Navigator.of(context).pushReplacementNamed('r');},
-                    ),
-
+                      SizedBox(height: 20,),
 
                 ListTile(
-                  title: Text("Contact Us"),
-                  leading: Icon(Icons.mail),
-                  onTap: () {
-                    Navigator.of(context).pushReplacementNamed('ContactUs');
-                    //Navigator.of(context).pushReplacementNamed('AccordionPage');
-                  },
+                    title: Text("My Profile"),
+                    leading: Icon(Icons.person),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ProfileScreen()),
+                          );
+                    },
+                ),
+                      ListTile(
+                        title: Text("HomePage"),
+                        leading: Icon(Icons.home),
+                        onTap: () {
+                          Navigator.of(context).pushNamed("home");
+                        },
+                      ),
+                      ListTile(
+                        title: Text("About Us"),
+                        leading: Icon(Icons.dataset),
+                        onTap: () { Navigator.of(context).pushReplacementNamed('AboutPage');},
+                      ),
+                      ListTile(
+                        title: Text("resault"),
+                        leading: Icon(Icons.dataset),
+                        onTap: () { Navigator.of(context).pushReplacementNamed('r');},
+                      ),
+
+
+                ListTile(
+                    title: Text("Contact Us"),
+                    leading: Icon(Icons.mail),
+                    onTap: () {
+                      Navigator.of(context).pushReplacementNamed('ContactUs');
+                      //Navigator.of(context).pushReplacementNamed('AccordionPage');
+                    },
                 ),
                 ListTile(
-                  title: Text("Helps & FAQs"),
-                  leading: Icon(Icons.help_center),
-                  onTap: () {
-                    Navigator.of(context).pushReplacementNamed('AccordionPage');
-                  },
+                    title: Text("Helps & FAQs"),
+                    leading: Icon(Icons.help_center),
+                    onTap: () {
+                      Navigator.of(context).pushReplacementNamed('AccordionPage');
+                    },
                 ),
-              ],)),
+              ],),
+                  )),
 
               // SizedBox(height: 20,),
               Expanded(
@@ -253,58 +255,64 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.all(10),
         child:  Column(children: [
             SizedBox(height: 10,),
-          Row(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                  width: 40,
-                  height: 40,
-                  margin: EdgeInsets.only(left: 5,),
+          Expanded(
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: 40,
+                    height: 40,
+                    margin: EdgeInsets.only(left: 5,),
 
-                  // margin: EdgeInsets.only(left: 20, top: 30),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Builder(
-                      builder: (context) {
-                        return IconButton(
-                            onPressed: () {
-                              Scaffold.of(context).openDrawer();
-                            },
-                            icon: Icon(
-                              Icons.menu,
-                              color: Colors.black,
-                              size: 15,
-                            ));
-                      }
-                  )),
-               SizedBox(width: 30),
-              Column(children: [
+                    // margin: EdgeInsets.only(left: 20, top: 30),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Builder(
+                        builder: (context) {
+                          return IconButton(
+                              onPressed: () {
+                                Scaffold.of(context).openDrawer();
+                              },
+                              icon: Icon(
+                                Icons.menu,
+                                color: Colors.black,
+                                size: 15,
+                              ));
+                        }
+                    )),
 
-              ],),
-              Text('Choose your report',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
-              SizedBox(width: 30,),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: GestureDetector(
-                      onTap: _pickImageAndUpload, // Call the method to pick an image and upload it to Firebase
-                      child: Container(
-                        width: 35,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image:  NetworkImage(
-                              myPhotoUrl ?? 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
+                Expanded(
+                  child: Column(children: [
+
+                  ],),
+                ),
+                Text('Choose your report',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
+                SizedBox(width: 30,),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: GestureDetector(
+                          onTap: _pickImageAndUpload, // Call the method to pick an image and upload it to Firebase
+                          child: Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image:  NetworkImage(
+                                  myPhotoUrl ?? 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
+                                  ),
+                              )
+                              )
+                              )
                               ),
-                          )
-                          )
-                          )
-                          ),
-              ),
-            ],),
+                  ),
+                ),
+              ],),
+          ),
       /*    Row(children: [
             Expanded(flex: 1,child: Container(
                 width: 40,
@@ -335,7 +343,7 @@ class _HomePageState extends State<HomePage> {
             ),)
           ],),
 */
-          Expanded(flex: 1,
+          Expanded(
             child: Container(
               margin: EdgeInsets.only(left: 20),
               child: Column(children: [
@@ -346,11 +354,13 @@ class _HomePageState extends State<HomePage> {
                     Text('Choose your report',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
                   ],
                 ),*/
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
-                  ],
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
+                    ],
+                  ),
                 ),
 
                 //Text('بلاغك',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red)),
@@ -367,62 +377,66 @@ class _HomePageState extends State<HomePage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-               InkWell(
-                 onTap: ()=> Navigator.of(context).pushNamed("cam"),
-                 child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                     height: 180,
-                     width: 170,
-                     decoration: BoxDecoration(
-                         color: Colors.grey[200],
-                         borderRadius: BorderRadius.circular(10)
-                     ),
-                     child:
-                     Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.circular(10.0),
-                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                         ),
-                         SizedBox(height: 5,),
-                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                         Container(
-                             margin: EdgeInsets.only(right: 20),
-                             child: Text("Fire Disaster",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                         SizedBox(height: 5,),
-                       ],
-                     )),
+               Expanded(
+                 child: InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam"),
+                   child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("Fire Disaster",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
                ),
                SizedBox(width: 20,),
-               InkWell(
-                 onTap: ()=> Navigator.of(context).pushNamed("cam2"),
-                 child: Container(
-                   //margin: EdgeInsets.only(bottom: 20),
-                   // padding: EdgeInsets.all(5),
-                     height: 180,
-                     width: 170,
-                     decoration: BoxDecoration(
-                         color: Colors.grey[200],
-                         borderRadius: BorderRadius.circular(10)
-                     ),
-                     child:
-                     Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         ClipRRect(
-                           borderRadius: BorderRadius.circular(10.0),
-                           child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                         ),
-                         SizedBox(height: 5,),
-                         //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                         Container(
-                             margin: EdgeInsets.only(right: 20),
-                             child: Text("Water disaster",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                         SizedBox(height: 5,),
-                       ],
-                     )),
+               Expanded(
+                 child: InkWell(
+                   onTap: ()=> Navigator.of(context).pushNamed("cam2"),
+                   child: Container(
+                     //margin: EdgeInsets.only(bottom: 20),
+                     // padding: EdgeInsets.all(5),
+                       height: 180,
+                       width: 170,
+                       decoration: BoxDecoration(
+                           color: Colors.grey[200],
+                           borderRadius: BorderRadius.circular(10)
+                       ),
+                       child:
+                       Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                         children: [
+                           ClipRRect(
+                             borderRadius: BorderRadius.circular(10.0),
+                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                           ),
+                           SizedBox(height: 5,),
+                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                           Container(
+                               margin: EdgeInsets.only(right: 20),
+                               child: Text("Water disaster",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                           SizedBox(height: 5,),
+                         ],
+                       )),
+                 ),
                ),
              ],),
 
@@ -430,186 +444,198 @@ class _HomePageState extends State<HomePage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 InkWell(
-                   onTap: ()=> Navigator.of(context).pushNamed("cam3"),
-                   child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                       height: 180,
-                       width: 170,
-                       decoration: BoxDecoration(
-                           color: Colors.grey[200],
-                           borderRadius: BorderRadius.circular(10)
-                       ),
-                       child:
-                       Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10.0),
-                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                           ),
-                           SizedBox(height: 5,),
-                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                           Container(
-                               margin: EdgeInsets.only(right: 20),
-                               child: Text("Infrastructure",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                           SizedBox(height: 5,),
-                         ],
-                       )),
+                 Expanded(
+                   child: InkWell(
+                     onTap: ()=> Navigator.of(context).pushNamed("cam3"),
+                     child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                         height: 180,
+                         width: 170,
+                         decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         child:
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             ClipRRect(
+                               borderRadius: BorderRadius.circular(10.0),
+                               child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                             ),
+                             SizedBox(height: 5,),
+                             //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                             Container(
+                                 margin: EdgeInsets.only(right: 20),
+                                 child: Text("Infrastructure",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                             SizedBox(height: 5,),
+                           ],
+                         )),
+                   ),
                  ),
                  SizedBox(width: 20,),
-                 InkWell(
-                   onTap: ()=> Navigator.of(context).pushNamed("cam4"),
-                   child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                       height: 180,
-                       width: 170,
-                       decoration: BoxDecoration(
-                           color: Colors.grey[200],
-                           borderRadius: BorderRadius.circular(10)
-                       ),
-                       child:
-                       Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10.0),
-                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                           ),
-                           SizedBox(height: 5,),
-                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                           Container(
-                               margin: EdgeInsets.only(right: 20),
-                               child: Text("Accidents",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                           SizedBox(height: 5,),
-                         ],
-                       )),
+                 Expanded(
+                   child: InkWell(
+                     onTap: ()=> Navigator.of(context).pushNamed("cam4"),
+                     child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                         height: 180,
+                         width: 170,
+                         decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         child:
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             ClipRRect(
+                               borderRadius: BorderRadius.circular(10.0),
+                               child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                             ),
+                             SizedBox(height: 5,),
+                             //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                             Container(
+                                 margin: EdgeInsets.only(right: 20),
+                                 child: Text("Accidents",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                             SizedBox(height: 5,),
+                           ],
+                         )),
+                   ),
                  ),
                ],),
              SizedBox(height: 20,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 InkWell(
-                   onTap: ()=> Navigator.of(context).pushNamed("cam"),
-                   child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                       height: 180,
-                       width: 170,
-                       decoration: BoxDecoration(
-                           color: Colors.grey[200],
-                           borderRadius: BorderRadius.circular(10)
-                       ),
-                       child:
-                       Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10.0),
-                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                           ),
-                           SizedBox(height: 5,),
-                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                           Container(
-                               margin: EdgeInsets.only(right: 20),
-                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                           SizedBox(height: 5,),
-                         ],
-                       )),
+                 Expanded(
+                   child: InkWell(
+                     onTap: ()=> Navigator.of(context).pushNamed("cam"),
+                     child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                         height: 180,
+                         width: 170,
+                         decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         child:
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             ClipRRect(
+                               borderRadius: BorderRadius.circular(10.0),
+                               child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                             ),
+                             SizedBox(height: 5,),
+                             //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                             Container(
+                                 margin: EdgeInsets.only(right: 20),
+                                 child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                             SizedBox(height: 5,),
+                           ],
+                         )),
+                   ),
                  ),
                  SizedBox(width: 20,),
-                 InkWell(
-                   onTap: ()=> Navigator.of(context).pushNamed("cam2"),
-                   child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                       height: 180,
-                       width: 170,
-                       decoration: BoxDecoration(
-                           color: Colors.grey[200],
-                           borderRadius: BorderRadius.circular(10)
-                       ),
-                       child:
-                       Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10.0),
-                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                           ),
-                           SizedBox(height: 5,),
-                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                           Container(
-                               margin: EdgeInsets.only(right: 20),
-                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                           SizedBox(height: 5,),
-                         ],
-                       )),
+                 Expanded(
+                   child: InkWell(
+                     onTap: ()=> Navigator.of(context).pushNamed("cam2"),
+                     child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                         height: 180,
+                         width: 170,
+                         decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         child:
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             ClipRRect(
+                               borderRadius: BorderRadius.circular(10.0),
+                               child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                             ),
+                             SizedBox(height: 5,),
+                             //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                             Container(
+                                 margin: EdgeInsets.only(right: 20),
+                                 child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                             SizedBox(height: 5,),
+                           ],
+                         )),
+                   ),
                  ),
                ],),
              SizedBox(height: 20,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 InkWell(
-                   onTap: ()=> Navigator.of(context).pushNamed("cam"),
-                   child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                       height: 180,
-                       width: 170,
-                       decoration: BoxDecoration(
-                           color: Colors.grey[200],
-                           borderRadius: BorderRadius.circular(10)
-                       ),
-                       child:
-                       Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10.0),
-                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                           ),
-                           SizedBox(height: 5,),
-                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                           Container(
-                               margin: EdgeInsets.only(right: 20),
-                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                           SizedBox(height: 5,),
-                         ],
-                       )),
+                 Expanded(
+                   child: InkWell(
+                     onTap: ()=> Navigator.of(context).pushNamed("cam"),
+                     child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                         height: 180,
+                         width: 170,
+                         decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         child:
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             ClipRRect(
+                               borderRadius: BorderRadius.circular(10.0),
+                               child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                             ),
+                             SizedBox(height: 5,),
+                             //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                             Container(
+                                 margin: EdgeInsets.only(right: 20),
+                                 child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                             SizedBox(height: 5,),
+                           ],
+                         )),
+                   ),
                  ),
                  SizedBox(width: 20,),
-                 InkWell(
-                   onTap: ()=> Navigator.of(context).pushNamed("cam2"),
-                   child: Container(
-                     //margin: EdgeInsets.only(bottom: 20),
-                     // padding: EdgeInsets.all(5),
-                       height: 180,
-                       width: 170,
-                       decoration: BoxDecoration(
-                           color: Colors.grey[200],
-                           borderRadius: BorderRadius.circular(10)
-                       ),
-                       child:
-                       Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ClipRRect(
-                             borderRadius: BorderRadius.circular(10.0),
-                             child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
-                           ),
-                           SizedBox(height: 5,),
-                           //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
-                           Container(
-                               margin: EdgeInsets.only(right: 20),
-                               child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-                           SizedBox(height: 5,),
-                         ],
-                       )),
+                 Expanded(
+                   child: InkWell(
+                     onTap: ()=> Navigator.of(context).pushNamed("cam2"),
+                     child: Container(
+                       //margin: EdgeInsets.only(bottom: 20),
+                       // padding: EdgeInsets.all(5),
+                         height: 180,
+                         width: 170,
+                         decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         child:
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             ClipRRect(
+                               borderRadius: BorderRadius.circular(10.0),
+                               child: Image.asset("assets/images/r1.jpg",width:double.infinity,height: 145,fit: BoxFit.fill,) ,
+                             ),
+                             SizedBox(height: 5,),
+                             //   Image.asset("assets/images/r1.jpg",width: 150,height: 130,fit: BoxFit.fill,),
+                             Container(
+                                 margin: EdgeInsets.only(right: 20),
+                                 child: Text("New Category",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+                             SizedBox(height: 5,),
+                           ],
+                         )),
+                   ),
                  ),
                ],),
            ],
@@ -635,115 +661,51 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 10,
+        color: Colors.white, // Set the background color of the bottom bar
         child: SizedBox(
           height: 60,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    child: MaterialButton(
-                      minWidth: 50,
-                      onPressed: () {
-                        setState(() {
-                          currentScreen =  HomePage();
-                          currentTab = 0;
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.dark_mode_rounded,
+                    color: currentTab == 1
+                        ? const Color(0xFF1ABC00)
+                        : Colors.black),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed("scan");
+                },
+                icon: Icon(Icons.translate_outlined,
+                    color: currentTab == 2
+                        ? Colors.green
+                        : Colors.black),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed("notification");
+                },
+                icon: Icon(Icons.notifications_active,
+                    color: currentTab == 4
+                        ? Colors.green
+                        : Colors.black),
+              ),
 
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.dark_mode_rounded,
-                                color: currentTab == 1
-                                    ? const Color(0xFF1ABC00)
-                                    : Colors.black),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 50,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = HomePage();
-                        currentTab = 2;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed("scan");
-                          },
-                          icon: Icon(Icons.translate_outlined,
-                              color: currentTab == 2
-                                  ? Colors.green
-                                  : Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 60),
-                    child: MaterialButton(
-                      minWidth: 50,
-                      onPressed: () {
-                        setState(() {
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed("profile");
 
-                          currentScreen =  HomePage();
-                          currentTab = 4;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.of(context).pushNamed("notification");
-                            },
-                            icon: Icon(Icons.notifications_active,
-                                color: currentTab == 4
-                                    ? Colors.green
-                                    : Colors.black),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 50,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen =  HomePage();
-                        currentTab = 5;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed("profile");
-
-                          },
-                          icon: Icon(Icons.person,
-                              color: currentTab == 5
-                                  ? Colors.green
-                                  : Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              )
+                },
+                icon: Icon(Icons.person,
+                    color: currentTab == 5
+                        ? Colors.green
+                        : Colors.black),
+              ),
             ],
           ),
         ),
