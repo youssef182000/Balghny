@@ -153,20 +153,22 @@ class _Cam3State extends State<Cam3> {
                     ),
                   ),
                 ))
-                : Container(
+                : Expanded(
+                  child: Container(
               width: 640,
               height: 480,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.grey,
-                border: Border.all(width: 8, color: Colors.black12),
-                borderRadius: BorderRadius.circular(12.0),
+                  color: Colors.grey,
+                  border: Border.all(width: 8, color: Colors.black12),
+                  borderRadius: BorderRadius.circular(12.0),
               ),
               child: const Text(
-                'Image should appear here',
-                style: TextStyle(fontSize: 26),
+                  'Image should appear here',
+                  style: TextStyle(fontSize: 26),
               ),
             ),
+                ),
             const SizedBox(
               height: 20,
             ),
