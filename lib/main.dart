@@ -1,13 +1,17 @@
 import 'package:balghny/view/auth.dart';
 import 'package:balghny/view/screen/EditProfileScreen.dart';
+import 'package:balghny/view/screen/about_page.dart';
 import 'package:balghny/view/screen/cam2_water_screen.dart';
 import 'package:balghny/view/screen/cam3_infa_screen.dart';
 
 import 'package:balghny/view/screen/cam4_accidents_screen.dart';
 import 'package:balghny/view/screen/cam_fire_screen.dart';
+import 'package:balghny/view/screen/contactUs_page.dart';
+import 'package:balghny/view/screen/fag_page.dart';
  import 'package:balghny/view/screen/home_page.dart';
 import 'package:balghny/view/screen/login_screen.dart';
 import 'package:balghny/view/screen/registration_screen.dart';
+import 'package:balghny/view/screen/result.dart';
 import 'package:balghny/view/screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -51,6 +55,10 @@ class MyApp extends StatelessWidget {
         "cam3" : (context) => Cam3(),
         "cam4" : (context) => Cam4(),
         "editprofile" : (context) => EditProfileScreen(),
+        "ContactUs" : (context) => ContactUs(),
+        "AboutPage" : (context) => AboutPage(),
+        "AccordionPage" : (context) => AccordionPage(),
+        "r" : (context) => Res(img: '',),
 
 
       },

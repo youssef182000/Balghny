@@ -174,20 +174,28 @@ class _HomePageState extends State<HomePage> {
                     ListTile(
                       title: Text("About Us"),
                       leading: Icon(Icons.dataset),
-                      onTap: () {},
+                      onTap: () { Navigator.of(context).pushReplacementNamed('AboutPage');},
+                    ),
+                    ListTile(
+                      title: Text("resault"),
+                      leading: Icon(Icons.dataset),
+                      onTap: () { Navigator.of(context).pushReplacementNamed('r');},
                     ),
 
 
                 ListTile(
                   title: Text("Contact Us"),
                   leading: Icon(Icons.mail),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed('ContactUs');
+                    //Navigator.of(context).pushReplacementNamed('AccordionPage');
+                  },
                 ),
                 ListTile(
                   title: Text("Helps & FAQs"),
                   leading: Icon(Icons.help_center),
                   onTap: () {
-                    Navigator.of(context).pushNamed("login");
+                    Navigator.of(context).pushReplacementNamed('AccordionPage');
                   },
                 ),
               ],)),

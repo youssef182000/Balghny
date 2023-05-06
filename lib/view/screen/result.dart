@@ -12,6 +12,7 @@ class Res extends StatelessWidget {
         leading: IconButton(
           onPressed: (){
             Navigator.pop(context);
+          //  Navigator.of(context).pushNamed("home");
           }, icon: Icon(Icons.arrow_back_ios_sharp),
         ),
       ),
