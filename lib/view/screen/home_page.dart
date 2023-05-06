@@ -1,7 +1,18 @@
+import 'package:balghny/view/screen/login_screen.dart';
+import 'package:balghny/view/screen/profile.dart';
 import 'package:balghny/view/widget/defaultBtn.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
+
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -9,6 +20,82 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+ Future<void> _pickImageAndUpload() async {
+    final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      // Get a reference to the Firebase Storage location
+      final storageRef = FirebaseStorage.instance.ref()
+          .child('profile_images')
+          .child(FirebaseAuth.instance.currentUser!.uid + '.jpg');
+
+      // Upload the file to Firebase Storage
+      await storageRef.putFile(File(pickedFile.path));
+
+      // Update the user's photo URL in Firestore
+      final photoUrl = await storageRef.getDownloadURL();
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({'photoUrl': photoUrl});
+      
+      setState(() {
+        myPhotoUrl = photoUrl;
+      });
+    }
+  }
+
+ var myEmail = "";
+  var myName = "";
+ var myPhotoUrl; // add this variable to store the user's photo URL
+
+
+  @override
+  void initState() {
+    super.initState();
+    _fetch();
+  }
+
+  Future<void> _fetch() async {
+    final firebaseUser = await FirebaseAuth.instance.currentUser!;
+    if (firebaseUser != null) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(firebaseUser.uid)
+          .get()
+          .then((ds) {
+        setState(() {
+         myEmail = ds.data()!["email"] ?? "";
+          myName = ds.data()!["name"] ?? "";
+          myPhotoUrl = ds.data()!["photoUrl"]?? "";  // get the user's photo URL
+
+        });
+        // get the user's photo URL
+        print(myEmail);
+        print(myName);
+      }).catchError((e) {
+        print(e);
+      });
+    }
+  }
+  late File file;
+  var imagePicker = ImagePicker(); 
+  uploadimage()async {
+    
+    // ignore: deprecated_member_use
+    var imgpicked = await imagePicker.getImage(source: ImageSource.camera);
+
+    if (imgpicked != null) {
+
+      file =File(imgpicked.path );
+
+      var refstorge = FirebaseStorage.instance.ref("imagesflnameimage") ;
+      await refstorge.putFile(file) ;
+      var url = refstorge.getDownloadURL() ;
+      print("url : $url") ; 
+    }
+    
+  }
   int currentTab = 0;
   final List<Widget> screens = [
     HomePage(),
@@ -72,7 +159,9 @@ class _HomePageState extends State<HomePage> {
                   title: Text("My Profile"),
                   leading: Icon(Icons.person),
                   onTap: () {
-                    Navigator.of(context).pushNamed("home");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProfileScreen()),
+                        );
                   },
                 ),
                     ListTile(
@@ -94,7 +183,6 @@ class _HomePageState extends State<HomePage> {
                   leading: Icon(Icons.mail),
                   onTap: () {},
                 ),
-
                 ListTile(
                   title: Text("Helps & FAQs"),
                   leading: Icon(Icons.help_center),
@@ -108,11 +196,17 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 flex: 1,
                 child: Row(children: [
-                  defaultButton(text: 'Log Out',
-                      function: (){}),
-                 /* InkWell(onTap: (){
-                    print("Facebook");
-                  },child: Container(
+                 InkWell( onTap: ()async{
+                          FirebaseAuth.instance.signOut();
+                          await FirebaseAuth.instance.signOut();
+                          // Sign out of Google 
+                          await GoogleSignIn().signOut();
+                          // Sign out of Facebook
+                          await FacebookAuth.instance.logOut();
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => Login()));
+                          
+                          // await signOutGoogle();
+                        },child: Container(
                     padding: EdgeInsets.all(5),
                     width: 110,
                     height: 40,
@@ -139,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                         Text("Log Out",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)
 
                       ],),
-                  ),)*/
+                  ),)
                 ],),
               )
             ],
@@ -185,12 +279,24 @@ class _HomePageState extends State<HomePage> {
               SizedBox(width: 30,),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset("assets/images/my.jpg",width: 35,height: 35,) ,
+                child: GestureDetector(
+                      onTap: _pickImageAndUpload, // Call the method to pick an image and upload it to Firebase
+                      child: Container(
+                        width: 35,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image:  NetworkImage(
+                              myPhotoUrl ?? 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
+                              ),
+                          )
+                          )
+                          )
+                          ),
               ),
             ],),
-
-
-
       /*    Row(children: [
             Expanded(flex: 1,child: Container(
                 width: 40,

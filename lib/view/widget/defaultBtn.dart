@@ -5,7 +5,8 @@ Widget defaultButton({
  // required Color background,
   required Function function,
   required String text,
-}) =>Container(
+}) =>
+Container(
   margin: EdgeInsets.symmetric(horizontal: 20),
   child: SizedBox(
     height: 40,
